@@ -6,5 +6,9 @@ public enum PacketType {
     Register,
     UpdateOpenHours,
     UpdateCloseHours,
+    AddBusiness,
+    AddEmployee,
+    RemoveEmployee,
+    UpdateEmployee,
 
 }
