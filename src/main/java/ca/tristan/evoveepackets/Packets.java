@@ -4,15 +4,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.PrintWriter;
+
 public class Packets {
 
     public ObjectMapper objectMapper = new ObjectMapper();
     private final Packet[] packets;
-    private final Object session;
+    private final PrintWriter printWriter;
 
-    public Packets(Packet[] packets, Object session) {
+    public Packets(Packet[] packets, PrintWriter printWriter) {
         this.packets = packets;
-        this.session = session;
+        this.printWriter = printWriter;
     }
 
     public void listenForPackets(String jsonString) {
@@ -29,15 +31,20 @@ public class Packets {
         }
     }
 
-    public void writePacketToClient(Packet packet) {}
-
-    public void writePacketToServer(Packet packet) {}
-
-    public Object getSession() {
-        return session;
+    public void writePacket(Packet packet) {
+        try {
+            getPrintWriter().println(packet.write(objectMapper));
+            getPrintWriter().flush();
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Packet[] getPackets() {
         return packets;
+    }
+
+    public PrintWriter getPrintWriter() {
+        return printWriter;
     }
 }
