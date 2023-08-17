@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ca.tristan.evoveepackets</groupId>
-    <artifactId>Packets</artifactId>
-    <version>1.6</version>
+    <artifactId>EvoveePackets</artifactId>
+    <version>1.7</version>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
@@ -26,5 +26,16 @@
             <version>2.15.2</version>
         </dependency>
     </dependencies>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>maven-shade-plugin</id>
+            <url>https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>
