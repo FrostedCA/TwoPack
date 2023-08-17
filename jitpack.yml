@@ -6,3 +6,7 @@ install:
 
 dependencies:
   - com.fasterxml.jackson.core:jackson-core:2.15.2
+
+classpath:
+  - target/classes
+  - target/dependency/*.jar
