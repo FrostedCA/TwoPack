@@ -21,7 +21,7 @@ public class Packets {
             for (Packet cPacket : packets) {
                 if(cPacket.getPacketType().name().equals(jsonNode.get("packetType").asText())) {
                     cPacket.read(jsonNode);
-                    break;
+                    return;
                 }
             }
         } catch (JsonProcessingException e) {
@@ -29,7 +29,7 @@ public class Packets {
         }
     }
 
-    public void writePacketToClient(Packet packet, Object session) {}
+    public void writePacketToClient(Packet packet) {}
 
     public void writePacketToServer(Packet packet) {}
 
