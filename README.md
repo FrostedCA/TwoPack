@@ -36,3 +36,44 @@ public class CPacketRegister extends Packet {
 
 }
 ```
+
+Example server-side child packet class:
+```java
+public class SPacketRegister extends Packet {
+
+    private boolean result;
+
+    public SPacketRegister(Object session) {
+        super(session);
+    }
+
+    public SPacketRegister(Object session, boolean result) {
+        super(session);
+        this.result = result;
+    }
+
+    @Override
+    public PacketType getPacketType() {
+        return PacketType.Register;
+    }
+
+    @Override
+    public String write(ObjectMapper objectMapper) throws JsonProcessingException {
+        RegisterObject registerObject = new RegisterObject();
+        registerObject.setResult(result);
+        registerObject.setPacketType(getPacketType().name());
+        return objectMapper.writeValueAsString(registerObject);
+    }
+
+    @Override
+    public void read(JsonNode jsonNode) {
+        boolean result = false;
+
+        boolean valid = InputValidation.validatePasswords(jsonNode.get("password").asText(), jsonNode.get("confPassword").asText());
+        if(valid) {
+            result = DBQueries.registerAccount(jsonNode.get("email").asText(), jsonNode.get("password").asText());
+        }
+        ((ClientSession) session).getPacketsManager().writePacket(new SPacketRegister(session, result));
+    }
+}
+```
