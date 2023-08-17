@@ -1,0 +1,8 @@
+jdk:
+  - openjdk11
+
+install:
+  - mvn clean install -DskipTests=true
+
+dependencies:
+  - com.fasterxml.jackson.core:jackson-core:2.15.2
