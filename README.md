@@ -3,6 +3,7 @@ Small packet library made for Evovee. You can use and modify it as you wish. It 
 
 ## Download
 [![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
+### JitPack is broken. The project is available with JitPack on version 1.8
 
 Example client-side child packet class:
 ```java
