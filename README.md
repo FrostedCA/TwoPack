@@ -2,7 +2,7 @@
 Small packet library made for Evovee. You can use and modify it as you wish. It uses Json so you will need to have json dependencies (Jackson Core).
 
 Example client-side child packet class:
-```
+```java
 public class CPacketRegister extends Packet {
 
     private RegisterObject registerObj;
