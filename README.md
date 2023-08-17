@@ -2,7 +2,7 @@
 Small packet library made for Evovee. You can use and modify it as you wish. It uses Json so you will need to have json dependencies (Jackson Core).
 
 ## Download
-[![](https://www.jitpack.io/v/FrostedCA/EvoveePackets/v1.8.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets/v1.8)
+[![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
 
 Example client-side child packet class:
 ```java
