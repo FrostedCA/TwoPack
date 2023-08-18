@@ -6,9 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public abstract class Packet {
 
-    public EvoSession session;
+    public ISession session;
 
-    public Packet(EvoSession session) {
+    public Packet(ISession session) {
         this.session = session;
     }
 

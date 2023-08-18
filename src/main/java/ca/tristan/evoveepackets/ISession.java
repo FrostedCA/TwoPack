@@ -1,4 +1,4 @@
 package ca.tristan.evoveepackets;
 
-public class EvoSession {
+public interface ISession {
 }
