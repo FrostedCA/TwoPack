@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="EvoveePackets">
-    <output-path>$PROJECT_DIR$/out/artifacts/EvoveePackets</output-path>
-    <root id="archive" name="EvoveePackets.jar">
+  <artifact type="jar" name="TwoPack">
+    <output-path>$PROJECT_DIR$/out/artifacts/TwoPack</output-path>
+    <root id="archive" name="TwoPack.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>

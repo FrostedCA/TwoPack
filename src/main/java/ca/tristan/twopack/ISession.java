@@ -1,5 +1,7 @@
 package ca.tristan.twopack;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
 import java.util.UUID;
@@ -16,7 +18,6 @@ public abstract class ISession extends Thread {
 
     public void closeSession() throws IOException {
         this.sslSocket.close();
-        System.out.println("Client '" + sessionUUID + "' disconnected.");
     }
 
     public UUID getSessionUUID() {
@@ -26,4 +27,7 @@ public abstract class ISession extends Thread {
     public SSLSocket getSslSocket() {
         return sslSocket;
     }
+
+    public abstract void log(JsonNode jsonNode);
+
 }

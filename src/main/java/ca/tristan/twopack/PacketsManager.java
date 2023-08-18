@@ -32,9 +32,9 @@ public class PacketsManager {
             return;
         }
         String receivedData = new String(buffer, 0, bytesRead);
-        System.out.println(receivedData);
         try {
             JsonNode jsonNode = objectMapper.readTree(receivedData);
+            iSession.log(jsonNode);
             for (Packet cPacket : packets) {
                 if(!jsonNode.get("packetType").isNull() && cPacket.getPacketType().equals(jsonNode.get("packetType").asText())) {
                     cPacket.read(jsonNode, objectMapper);
