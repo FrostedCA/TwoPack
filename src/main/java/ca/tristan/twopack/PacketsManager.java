@@ -1,10 +1,9 @@
-package ca.tristan.evoveepackets;
+package ca.tristan.twopack;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.net.ssl.SSLSocket;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;

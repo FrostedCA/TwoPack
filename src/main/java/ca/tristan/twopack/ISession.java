@@ -1,4 +1,4 @@
-package ca.tristan.evoveepackets;
+package ca.tristan.twopack;
 
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;

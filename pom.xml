@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ca.tristan.evoveepackets</groupId>
-    <artifactId>EvoveePackets</artifactId>
-    <version>2.11</version>
+    <groupId>ca.tristan.twopack</groupId>
+    <artifactId>TwoPack</artifactId>
+    <version>2.12</version>
     <packaging>jar</packaging>
-    <name>EvoveePackets</name>
+    <name>TwoPack</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

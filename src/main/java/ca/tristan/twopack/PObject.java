@@ -1,4 +1,4 @@
-package ca.tristan.evoveepackets;
+package ca.tristan.twopack;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
