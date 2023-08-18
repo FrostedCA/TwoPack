@@ -1,6 +1,6 @@
 package ca.tristan.evoveepackets;
 
-public enum PacketType {
+public enum PType {
 
     Login,
     Register,

@@ -5,15 +5,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 
-public class Packets {
+public class PacketsManager {
 
-    public ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
     private final Packet[] packets;
+    private final HashMap<PType, PObject> standbyPackets = new HashMap<>();
     private final PrintWriter printWriter;
     public final int MAX_BUFFER_SIZE = 4096;
 
-    public Packets(Packet[] packets, PrintWriter printWriter) {
+    public PacketsManager(Packet[] packets, PrintWriter printWriter) {
         this.packets = packets;
         this.printWriter = printWriter;
     }
@@ -48,4 +50,10 @@ public class Packets {
     public PrintWriter getPrintWriter() {
         return printWriter;
     }
+
+    public HashMap<PType, PObject> getStandbyPackets() {
+        return standbyPackets;
+    }
+
+
 }

@@ -2,7 +2,7 @@ package ca.tristan.evoveepackets;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public abstract class PacketObject {
+public abstract class PObject {
 
     private String packetType;
 

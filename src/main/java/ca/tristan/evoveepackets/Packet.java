@@ -6,13 +6,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public abstract class Packet {
 
-    public Object session;
+    public EvoSession session;
 
-    public Packet(Object session) {
+    public Packet(EvoSession session) {
         this.session = session;
     }
 
-    public abstract PacketType getPacketType();
+    public abstract PType getPacketType();
 
     public abstract String write(ObjectMapper objectMapper) throws JsonProcessingException;
 
