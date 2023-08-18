@@ -11,6 +11,7 @@ public class Packets {
     public ObjectMapper objectMapper = new ObjectMapper();
     private final Packet[] packets;
     private final PrintWriter printWriter;
+    public final int MAX_BUFFER_SIZE = 4096;
 
     public Packets(Packet[] packets, PrintWriter printWriter) {
         this.packets = packets;
