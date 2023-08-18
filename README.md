@@ -8,8 +8,8 @@ Small packet library made for Evovee. You can use and modify it as you wish. It 
 For more details contact me on discord: **landryman**.
 Version 2.00+ stable.
 
-## Example client-side child packet class:
-#### With Update v2.11
+## Example client-side child packet class
+### With Update v2.11
 ```java
 public class CPacketRegister extends Packet {
 
@@ -32,8 +32,8 @@ public class CPacketRegister extends Packet {
 }
 ```
 
-## Example server-side child packet class:
-#### With Update v2.11
+## Example server-side child packet class
+### With Update v2.11
 ```java
 public class SPacketRegister extends Packet {
 
