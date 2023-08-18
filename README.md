@@ -22,20 +22,15 @@ public class CPacketRegister extends Packet {
     }
 
     @Override
-    public PacketType getPacketType() {
-        return PacketType.Register;
-    }
-
-    @Override
     public String write(ObjectMapper objectMapper) throws JsonProcessingException {
         registerObj.setPacketType(getPacketType().name());
         return objectMapper.writeValueAsString(registerObj);
     }
 
     @Override
-    public void read(JsonNode jsonNode) {
-        if(jsonNode.get("result").asBoolean()) {
-            App.getSession().getWindowOnScreen().setUserInterface(VDL.registerUI);
+    public void read(JsonNode jsonNode, ObjectMapper objectMapper) throws JsonProcessingException {
+        if(jsonNode.get("email") != null && !jsonNode.get("email").isNull()) {
+            App.getSession().getPacketsManager().writePacket(new CPacketLogin(App.getSession(), jsonNode.get("email").asText(), jsonNode.get("password").asText()));
         }
     }
 
@@ -58,11 +53,6 @@ public class SPacketRegister extends Packet {
     }
 
     @Override
-    public PacketType getPacketType() {
-        return PacketType.Register;
-    }
-
-    @Override
     public String write(ObjectMapper objectMapper) throws JsonProcessingException {
         RegisterObject registerObject = new RegisterObject();
         registerObject.setResult(result);
@@ -71,14 +61,18 @@ public class SPacketRegister extends Packet {
     }
 
     @Override
-    public void read(JsonNode jsonNode) {
+    public void read(JsonNode jsonNode, ObjectMapper objectMapper) throws JsonProcessingException {
         boolean result = false;
 
-        boolean valid = InputValidation.validatePasswords(jsonNode.get("password").asText(), jsonNode.get("confPassword").asText());
+        RegisterObject registerObject = objectMapper.treeToValue(jsonNode, RegisterObject.class);
+
+        boolean valid = InputValidator.validatePassword(registerObject.getPassword(), registerObject.getConfPassword());
         if(valid) {
-            result = DBQueries.registerAccount(jsonNode.get("email").asText(), jsonNode.get("password").asText());
+            result = DBQueries.registerAccount(registerObject);
         }
-        ((ClientSession) session).getPacketsManager().writePacket(new SPacketRegister(session, result));
+        if(result) {
+            ((ClientSession) session).getPacketsManager().writePacket(new SPacketRegister(session, registerObject));
+        }
     }
 }
 ```
