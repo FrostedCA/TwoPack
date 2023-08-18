@@ -89,7 +89,7 @@ dependencies {
 
 <dependency>
   <groupId>com.github.FrostedCA</groupId>
-  <artifactId>EvoveePackets</artifactId>
+  <artifactId>TwoPack</artifactId>
   <version>Tag</version>
 </dependency>
 ```
