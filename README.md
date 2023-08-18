@@ -67,29 +67,29 @@ public class SPacketRegister extends Packet {
 [![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
 ### Gradle
 ```gradle
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://www.jitpack.io' }
-		}
-	}
+allprojects {
+   repositories {
+      ...
+      maven { url 'https://www.jitpack.io' }
+   }
+}
 
-	dependencies {
-	        implementation 'com.github.FrostedCA:EvoveePackets:VERSION'
-	}
+dependencies {
+   implementation 'com.github.FrostedCA:EvoveePackets:VERSION'
+}
 ```
 ### Maven
 ```xml
-	<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://www.jitpack.io</url>
-		</repository>
-	</repositories>
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://www.jitpack.io</url>
+  </repository>
+</repositories>
 
-	<dependency>
-	    <groupId>com.github.FrostedCA</groupId>
-	    <artifactId>EvoveePackets</artifactId>
-	    <version>Tag</version>
-	</dependency>
+<dependency>
+  <groupId>com.github.FrostedCA</groupId>
+  <artifactId>EvoveePackets</artifactId>
+  <version>Tag</version>
+</dependency>
 ```
