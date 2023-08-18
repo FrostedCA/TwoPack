@@ -64,7 +64,7 @@ public class SPacketRegister extends Packet {
 ```
 
 ## Download
-[![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
+[![](https://www.jitpack.io/v/FrostedCA/TwoPack.svg)](https://www.jitpack.io/#FrostedCA/TwoPack)
 ### Gradle
 ```gradle
 allprojects {
