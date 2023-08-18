@@ -3,7 +3,7 @@
 - <a href="#example-server-side-child-packet-class">Server Side Packet Example</a>
 - <a href="#download">Download</a>
 
-# EvoveePackets
+# TwoPack
 Small packet library made for Evovee. You can use and modify it as you wish. It uses Json so you will need to have json dependencies (Jackson Core).
 For more details contact me on discord: **landryman**.
 Version 2.00+ stable.
@@ -75,7 +75,7 @@ allprojects {
 }
 
 dependencies {
-   implementation 'com.github.FrostedCA:EvoveePackets:VERSION'
+   implementation 'com.github.FrostedCA:TwoPack:VERSION'
 }
 ```
 ### Maven
