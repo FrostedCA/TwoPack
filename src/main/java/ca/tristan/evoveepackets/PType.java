@@ -2,6 +2,7 @@ package ca.tristan.evoveepackets;
 
 public enum PType {
 
+    Handshake,
     Login,
     Register,
     UpdateOpenHours,

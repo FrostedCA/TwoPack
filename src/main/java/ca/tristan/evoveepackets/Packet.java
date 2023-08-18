@@ -12,10 +12,19 @@ public abstract class Packet {
         this.session = session;
     }
 
-    public abstract PType getPacketType();
+    public String getPacketType() {
+        String str = getClass().getSimpleName();
+        if(getClass().getSimpleName().contains("SPacket")) {
+            str = str.replace("SPacket", "");
+        }
+        if(getClass().getSimpleName().contains("CPacket")) {
+            str = str.replace("CPacket", "");
+        }
+        return str;
+    }
 
     public abstract String write(ObjectMapper objectMapper) throws JsonProcessingException;
 
-    public abstract void read(JsonNode jsonNode);
+    public abstract void read(JsonNode jsonNode, ObjectMapper objectMapper) throws JsonProcessingException;
 
 }
