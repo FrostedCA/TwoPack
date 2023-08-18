@@ -1,10 +1,12 @@
+# Summary
+- <a href="#example-client-side-child-packet-class">Client Side Packet Example</a>
+- <a href="#example-server-side-child-packet-class">Server Side Packet Example</a>
+- <a href="#download">Download</a>
+
 # EvoveePackets
 Small packet library made for Evovee. You can use and modify it as you wish. It uses Json so you will need to have json dependencies (Jackson Core).
 For more details contact me on discord: **landryman**.
 Version 2.00+ stable.
-
-## Download
-[![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
 
 ## Example client-side child packet class:
 #### With Update v2.11
@@ -30,7 +32,7 @@ public class CPacketRegister extends Packet {
 }
 ```
 
-Example server-side child packet class:
+## Example server-side child packet class:
 #### With Update v2.11
 ```java
 public class SPacketRegister extends Packet {
@@ -59,4 +61,36 @@ public class SPacketRegister extends Packet {
         }
     }
 }
+```
+
+## Download
+[![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
+
+### Gradle
+```gradle
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://www.jitpack.io' }
+		}
+	}
+
+	dependencies {
+	        implementation 'com.github.FrostedCA:EvoveePackets:VERSION'
+	}
+```
+### Maven
+```maven
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://www.jitpack.io</url>
+		</repository>
+	</repositories>
+
+	<dependency>
+	    <groupId>com.github.FrostedCA</groupId>
+	    <artifactId>EvoveePackets</artifactId>
+	    <version>Tag</version>
+	</dependency>
 ```
