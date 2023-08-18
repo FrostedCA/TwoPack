@@ -1,63 +1,49 @@
+# Summary
+- <a href="#example-client-side-child-packet-class">Client Side Packet Example</a>
+- <a href="#example-server-side-child-packet-class">Server Side Packet Example</a>
+- <a href="#download">Download</a>
+
 # EvoveePackets
 Small packet library made for Evovee. You can use and modify it as you wish. It uses Json so you will need to have json dependencies (Jackson Core).
 For more details contact me on discord: **landryman**.
 Version 2.00+ stable.
 
-## Download
-[![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
-
-Example client-side child packet class:
+## Example client-side child packet class
+### With Update v2.11
 ```java
 public class CPacketRegister extends Packet {
 
-    private RegisterObject registerObj;
-
-    public CPacketRegister(Object session) {
+    public CPacketRegister(ISession session) {
         super(session);
     }
 
-    public CPacketRegister(Object session, RegisterObject registerObject) {
+    public CPacketRegister(ISession session, RegisterObject registerObject) {
         super(session);
-        this.registerObj = registerObject;
-    }
-
-    @Override
-    public String write(ObjectMapper objectMapper) throws JsonProcessingException {
-        registerObj.setPacketType(getPacketType().name());
-        return objectMapper.writeValueAsString(registerObj);
+        this.pObject = registerObject;
     }
 
     @Override
     public void read(JsonNode jsonNode, ObjectMapper objectMapper) throws JsonProcessingException {
-        if(jsonNode.get("email") != null && !jsonNode.get("email").isNull()) {
-            App.getSession().getPacketsManager().writePacket(new CPacketLogin(App.getSession(), jsonNode.get("email").asText(), jsonNode.get("password").asText()));
+        if(!jsonNode.isNull() && !jsonNode.isEmpty()) {
+            RegisterObject registerObject = objectMapper.treeToValue(jsonNode, RegisterObject.class);
+            App.getSession().getPacketsManager().writePacket(new CPacketLogin(App.getSession(), registerObject));
         }
     }
-
 }
 ```
 
-Example server-side child packet class:
+## Example server-side child packet class
+### With Update v2.11
 ```java
 public class SPacketRegister extends Packet {
 
-    private boolean result;
-
-    public SPacketRegister(Object session) {
+    public SPacketRegister(ISession session) {
         super(session);
     }
 
-    public SPacketRegister(Object session, boolean result) {
+    public SPacketRegister(ISession session, RegisterObject registerObject) {
         super(session);
-        this.result = result;
-    }
-
-    @Override
-    public String write(ObjectMapper objectMapper) throws JsonProcessingException {
-        RegisterObject registerObject = new RegisterObject();
-        registerObject.setResult(result);
-        registerObject.setPacketType(getPacketType().name());
-        return objectMapper.writeValueAsString(registerObject);
+        this.pObject = registerObject;
     }
 
     @Override
@@ -75,4 +61,35 @@ public class SPacketRegister extends Packet {
         }
     }
 }
+```
+
+## Download
+[![](https://www.jitpack.io/v/FrostedCA/TwoPack.svg)](https://www.jitpack.io/#FrostedCA/TwoPack)
+### Gradle
+```gradle
+allprojects {
+   repositories {
+      ...
+      maven { url 'https://www.jitpack.io' }
+   }
+}
+
+dependencies {
+   implementation 'com.github.FrostedCA:EvoveePackets:VERSION'
+}
+```
+### Maven
+```xml
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://www.jitpack.io</url>
+  </repository>
+</repositories>
+
+<dependency>
+  <groupId>com.github.FrostedCA</groupId>
+  <artifactId>TwoPack</artifactId>
+  <version>Tag</version>
+</dependency>
 ```
