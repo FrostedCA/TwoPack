@@ -65,7 +65,6 @@ public class SPacketRegister extends Packet {
 
 ## Download
 [![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
-
 ### Gradle
 ```gradle
 	allprojects {
@@ -80,7 +79,7 @@ public class SPacketRegister extends Packet {
 	}
 ```
 ### Maven
-```maven
+```xml
 	<repositories>
 		<repository>
 		    <id>jitpack.io</id>
