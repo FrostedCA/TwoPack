@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public abstract class Packet {
 
     public ISession session;
+    public PObject pObject;
 
     public Packet(ISession session) {
         this.session = session;
@@ -23,7 +24,10 @@ public abstract class Packet {
         return str;
     }
 
-    public abstract String write(ObjectMapper objectMapper) throws JsonProcessingException;
+    public String write(ObjectMapper objectMapper) throws JsonProcessingException {
+        pObject.setPacketType(getPacketType());
+        return objectMapper.writeValueAsString(pObject);
+    }
 
     public abstract void read(JsonNode jsonNode, ObjectMapper objectMapper) throws JsonProcessingException;
 

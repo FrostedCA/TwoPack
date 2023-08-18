@@ -68,11 +68,11 @@ public class PacketsManager {
         return standbyPackets;
     }
 
-    public void addStandbyPacket(PObject pObject) {
+    public void addStandbyPObject(PObject pObject) {
         standbyPackets.put(pObject.getClass().getSimpleName(), pObject);
     }
 
-    public PObject getStandbyPacket(String pType) {
+    public PObject getStandbyPObject(String pType) {
         if(standbyPackets.containsKey(pType)) {
             PObject object = standbyPackets.get(pType);
             standbyPackets.remove(pType);
