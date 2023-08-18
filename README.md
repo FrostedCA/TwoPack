@@ -1,5 +1,7 @@
 # EvoveePackets
 Small packet library made for Evovee. You can use and modify it as you wish. It uses Json so you will need to have json dependencies (Jackson Core).
+For more details contact me on discord: **landryman**.
+Version 2.00+ stable.
 
 ## Download
 [![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
