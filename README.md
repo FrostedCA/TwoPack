@@ -7,7 +7,7 @@ Version 2.00+ stable.
 [![](https://www.jitpack.io/v/FrostedCA/EvoveePackets.svg)](https://www.jitpack.io/#FrostedCA/EvoveePackets)
 
 ## Example client-side child packet class:
-#### Update v2.11
+#### With Update v2.11
 ```java
 public class CPacketRegister extends Packet {
 
@@ -31,26 +31,17 @@ public class CPacketRegister extends Packet {
 ```
 
 Example server-side child packet class:
+#### With Update v2.11
 ```java
 public class SPacketRegister extends Packet {
 
-    private boolean result;
-
-    public SPacketRegister(Object session) {
+    public SPacketRegister(ISession session) {
         super(session);
     }
 
-    public SPacketRegister(Object session, boolean result) {
+    public SPacketRegister(ISession session, RegisterObject registerObject) {
         super(session);
-        this.result = result;
-    }
-
-    @Override
-    public String write(ObjectMapper objectMapper) throws JsonProcessingException {
-        RegisterObject registerObject = new RegisterObject();
-        registerObject.setResult(result);
-        registerObject.setPacketType(getPacketType().name());
-        return objectMapper.writeValueAsString(registerObject);
+        this.pObject = registerObject;
     }
 
     @Override
