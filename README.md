@@ -1,6 +1,6 @@
 # Summary
-- <a href="#example-client-side-child-packet-class">Client Side Packet Example</a>
-- <a href="#example-server-side-child-packet-class">Server Side Packet Example</a>
+- <a href="#example-client-side-classpacket-child">Client Side Packet Example</a>
+- <a href="#example-server-side-classpacket-child">Server Side Packet Example</a>
 - <a href="#download">Download</a>
 
 # TwoPack
@@ -8,10 +8,10 @@ Small packet library made for Evovee. You can use and modify it as you wish. It 
 For more details contact me on discord: **landryman**.
 Version 2.00+ stable.
 
-## Example client-side child packet class
-### With Update v2.11
+## Example client-side ClassPacket child
+### With Update v2.11+
 ```java
-public class CPacketRegister extends Packet {
+public class CPacketRegister extends ClassPacket {
 
     public CPacketRegister(ISession session) {
         super(session);
@@ -32,10 +32,10 @@ public class CPacketRegister extends Packet {
 }
 ```
 
-## Example server-side child packet class
-### With Update v2.11
+## Example server-side ClassPacket child
+### With Update v2.11+
 ```java
-public class SPacketRegister extends Packet {
+public class SPacketRegister extends ClassPacket {
 
     public SPacketRegister(ISession session) {
         super(session);
@@ -61,6 +61,38 @@ public class SPacketRegister extends Packet {
         }
     }
 }
+```
+
+## Example VarPacket
+### With Update v2.15+
+```java
+public VarPacket varPacket = new VarPacket(session) {
+        @Override
+        public String getPacketType() {
+            return "Example";
+        }
+
+        @Override
+        public void write(PrintWriter printWriter, ObjectMapper objectMapper) throws JsonProcessingException {
+            /**
+             * Process your data...
+             */
+
+            // Create your object
+            this.pObject = new ExampleObject(); // -> (public class ExampleObject extends PObject)
+            this.pObject.setPacketType(getPacketType()); // -> Set the packet type.
+            printWriter.println(objectMapper.writeValueAsString(pObject)); // -> Write the packet.
+            printWriter.flush();
+        }
+
+        @Override
+        public void read(JsonNode jsonNode, ObjectMapper objectMapper) throws JsonProcessingException {
+            /**
+             * Process your data... (Same as ClassPacket see Summary inside ReadMe)
+             * You can also access your 'session' this.session and cast it to your actual session class if needed (server side especially)
+             */
+        }
+};
 ```
 
 ## Download
