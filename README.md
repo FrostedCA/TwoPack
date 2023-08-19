@@ -1,6 +1,7 @@
 # Summary
 - <a href="#example-client-side-classpacket-child">Client Side Packet Example</a>
 - <a href="#example-server-side-classpacket-child">Server Side Packet Example</a>
+- <a href="#example-varpacket">Server Side Packet Example</a>
 - <a href="#download">Download</a>
 
 # TwoPack
@@ -65,6 +66,7 @@ public class SPacketRegister extends ClassPacket {
 
 ## Example VarPacket
 ### With Update v2.15+
+VarPacket or Variable Packet is a new way of creating your packets! As the name implies, you can create a packet inside a variable. Old packets have received there new class ClassPacket.java. The old Packet.java is now protected. Packets now also implements an interface, more onto this on future releases.
 ```java
 public VarPacket varPacket = new VarPacket(session) {
         @Override
