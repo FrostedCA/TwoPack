@@ -1,7 +1,7 @@
 # Summary
 - <a href="#example-client-side-classpacket-child">Client Side Packet Example</a>
 - <a href="#example-server-side-classpacket-child">Server Side Packet Example</a>
-- <a href="#example-varpacket">Server Side Packet Example</a>
+- <a href="#example-varpacket">VarPacket example</a>
 - <a href="#download">Download</a>
 
 # TwoPack
