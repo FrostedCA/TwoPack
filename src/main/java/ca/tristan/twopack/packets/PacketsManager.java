@@ -58,7 +58,11 @@ public class PacketsManager {
     }
 
     public void writePacket(VarPacket packet) {
-        packet.write(printWriter, objectMapper);
+        try {
+            packet.write(printWriter, objectMapper);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void writePacket(ClassPacket packet) {
