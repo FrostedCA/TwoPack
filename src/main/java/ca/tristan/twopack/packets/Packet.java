@@ -1,15 +1,18 @@
-package ca.tristan.twopack;
+package ca.tristan.twopack.packets;
 
+import ca.tristan.twopack.ISession;
+import ca.tristan.twopack.json.PObject;
+import ca.tristan.twopack.interfaces.IPacket;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public abstract class Packet {
+public abstract class Packet implements IPacket {
 
     public ISession session;
     public PObject pObject;
 
-    public Packet(ISession session) {
+    protected Packet(ISession session) {
         this.session = session;
     }
 

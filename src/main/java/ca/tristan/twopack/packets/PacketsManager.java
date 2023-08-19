@@ -1,5 +1,7 @@
-package ca.tristan.twopack;
+package ca.tristan.twopack.packets;
 
+import ca.tristan.twopack.ISession;
+import ca.tristan.twopack.json.PObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,6 +49,19 @@ public class PacketsManager {
     }
 
     public void writePacket(Packet packet) {
+        try {
+            getPrintWriter().println(packet.write(objectMapper));
+            getPrintWriter().flush();
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void writePacket(VarPacket packet) {
+        packet.write(printWriter, objectMapper);
+    }
+
+    public void writePacket(ClassPacket packet) {
         try {
             getPrintWriter().println(packet.write(objectMapper));
             getPrintWriter().flush();

@@ -6,7 +6,7 @@
 
     <groupId>ca.tristan.twopack</groupId>
     <artifactId>TwoPack</artifactId>
-    <version>2.12</version>
+    <version>2.15</version>
     <packaging>jar</packaging>
     <name>TwoPack</name>
 
