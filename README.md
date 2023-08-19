@@ -5,7 +5,7 @@
 - <a href="#download">Download</a>
 
 # TwoPack
-Small packet library made for Evovee. You can use and modify it as you wish. It uses Json so you will need to have json dependencies (Jackson Core).
+Small packet library made for Java SSLSockets. You can use and modify it as you wish. It uses Json so you will need to have json dependencies (Jackson Core).
 For more details contact me on discord: **landryman**.
 Version 2.00+ stable.
 
