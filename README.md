@@ -1,6 +1,7 @@
 # Summary
 - <a href="#example-client-side-classpacket-child">Client Side Packet Example</a>
 - <a href="#example-server-side-classpacket-child">Server Side Packet Example</a>
+- <a href="#how-to-setup-packet-manager-client-and-server-side">How to setup packet manager client and server side</a>
 - <a href="#example-varpacket">VarPacket example</a>
 - <a href="#download">Download</a>
 
@@ -92,7 +93,7 @@ public class RegisterObject extends PObject {
 ...
 }
 ```
-## How to setup packet manager client and server side?
+## How to setup packet manager client and server side
 Simply add this code right after where you are starting the handshake between the client and server.
 ```java
 try{
