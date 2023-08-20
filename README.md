@@ -1,6 +1,7 @@
 # Summary
 - <a href="#example-client-side-classpacket-child">Client Side Packet Example</a>
 - <a href="#example-server-side-classpacket-child">Server Side Packet Example</a>
+- <a href="#register-object-example">PObject Example</a>
 - <a href="#how-to-setup-packet-manager-client-and-server-side">How to setup packet manager client and server side</a>
 - <a href="#example-varpacket">VarPacket example</a>
 - <a href="#download">Download</a>
