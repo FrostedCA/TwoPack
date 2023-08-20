@@ -57,10 +57,53 @@ public class SPacketRegister extends ClassPacket {
         if(valid) {
             result = DBQueries.registerAccount(registerObject);
         }
-        if(result) {
-            ((ClientSession) session).getPacketsManager().writePacket(new SPacketRegister(session, registerObject));
-        }
+        registerObject.setResult(result);
+        ((ClientSession) session).getPacketsManager().writePacket(new SPacketRegister(session, registerObject));
     }
+}
+```
+## Register Object Example
+```java
+public class RegisterObject extends PObject {
+
+    private String email;
+    private String password;
+    private String confPassword;
+    private String firstName;
+    private String lastName;
+
+    @JsonProperty("email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @JsonProperty("password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+...
+}
+```
+## How to setup packet manager client and server side?
+Simply add this code right after where you are starting the handshake between the client and server.
+```java
+try{
+    this.getSslSocket().startHandshake();
+    this.packetsManager = new PacketsManager(this.packetList, this);
+    this.packetsManager.writePacket(new CPacketHandshake(this));
+    while (!this.getSslSocket().isClosed()) {
+        this.packetsManager.listenForPackets();
+    }
+} catch(IOException e) {
+// log/code here
 }
 ```
 
