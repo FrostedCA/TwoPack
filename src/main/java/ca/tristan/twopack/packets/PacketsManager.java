@@ -6,9 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.HashMap;
 
 public class PacketsManager {
@@ -27,24 +25,25 @@ public class PacketsManager {
     }
 
     public void listenForPackets() throws IOException {
-        byte[] buffer = new byte[4096];
-        int bytesRead = this.iSession.getSslSocket().getInputStream().read(buffer);
-        if(bytesRead == -1) {
-            iSession.closeSession();
-            return;
-        }
-        String receivedData = new String(buffer, 0, bytesRead);
-        try {
-            JsonNode jsonNode = objectMapper.readTree(receivedData);
-            iSession.log(jsonNode);
-            for (Packet cPacket : packets) {
-                if(!jsonNode.get("packetType").isNull() && cPacket.getPacketType().equals(jsonNode.get("packetType").asText())) {
-                    cPacket.read(jsonNode, objectMapper);
-                    return;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(this.iSession.getSslSocket().getInputStream()));
+
+        String receivedData;
+        while ((receivedData = reader.readLine()) != null) {
+            try {
+                JsonNode jsonNode = objectMapper.readTree(receivedData);
+                iSession.log(jsonNode);
+
+                for (Packet cPacket : packets) {
+                    if(!jsonNode.hasNonNull("packetType") && cPacket.getPacketType().equals(jsonNode.get("packetType").asText())) {
+                        cPacket.read(jsonNode, objectMapper);
+                        break;
+                    }
                 }
+            } catch (JsonProcessingException e) {
+                System.out.println("Invalid JSON received: " + receivedData);
+                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
         }
     }
 
