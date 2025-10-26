@@ -34,7 +34,7 @@ public class PacketsManager {
                 iSession.log(jsonNode);
 
                 for (Packet cPacket : packets) {
-                    if(!jsonNode.hasNonNull("packetType") && cPacket.getPacketType().equals(jsonNode.get("packetType").asText())) {
+                    if(jsonNode.hasNonNull("packetType") && cPacket.getPacketType().equals(jsonNode.get("packetType").asText())) {
                         cPacket.read(jsonNode, objectMapper);
                         break;
                     }
